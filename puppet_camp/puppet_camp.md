@@ -6,39 +6,6 @@
 
 #### This presentation is powered by <a href="https://github.com/schacon/showoff">ShowOff</a>
 
-!SLIDE center
-# Why am I here?
-
-!SLIDE image center
-
-# Its all his fault.
-
-![Nigel Kersten](../_images/nigel.jpeg)
-### Nigel Kersten  
-
-.notes product manager for all the things, for about 18 months.
-.notes Awesome at it, but too much to do. 
-
-!SLIDE smaller bullets
-
-# Enter The Product Owners!
-
-* Carl Caum - Enterprise Console & Special Projects  
-* Eric Sorenson - Puppet  
-* Hiring (Nigel Temp) - Puppet Enterprise  
-* Ryan Coleman - Puppet Forge & Modules  
-
-.notes Voice of our customer, the sysadmin.
-.notes Accomodate needs of many (sometimes conflicting) audiences.
-.notes Shape and promote awesome product.
-
-!SLIDE image center
-![I have no idea what Im doing](../_images/no_idea_dog_computer.jpg)
-
-.notes Product Ownership is new to me, Systems Administration isnt.
-
-.notes Sysadmin -> PS -> Edu -> Product Owner
-
 !SLIDE image center
 
 ![Content is King](../_images/king-content.jpg)
