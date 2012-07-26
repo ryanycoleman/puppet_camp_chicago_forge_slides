@@ -5,3 +5,5 @@
 To view the built content, see the html page or the pdf document.
 
 If you're curious, the slides are built with showoff from a markdown file.
+
+Please direct any questions/comments to my Twitter handle, @ryanycoleman
