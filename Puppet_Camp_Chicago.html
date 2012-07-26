@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0029)http://localhost:9090/onepage -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+  <title>Puppet Camp Chicago</title>
+
+  
+
+    
+      <link rel="stylesheet" href="./Puppet_Camp_Chicago_files/reset.css" type="text/css">
+    
+      <link rel="stylesheet" href="./Puppet_Camp_Chicago_files/showoff.css" type="text/css">
+    
+      <link rel="stylesheet" href="./Puppet_Camp_Chicago_files/ui.all.css" type="text/css">
+    
+      <link rel="stylesheet" href="./Puppet_Camp_Chicago_files/sh_style.css" type="text/css">
+    
+      <link rel="stylesheet" href="./Puppet_Camp_Chicago_files/onepage.css" type="text/css">
+    
+    
+      <link rel="stylesheet" href="./Puppet_Camp_Chicago_files/showoff(1).css" type="text/css">
+    
+
+    
+      <script type="text/javascript" src="./Puppet_Camp_Chicago_files/jquery-1.4.2.min.js"></script>
+    
+      <script type="text/javascript" src="./Puppet_Camp_Chicago_files/jquery-print.js"></script>
+    
+      <script type="text/javascript" src="./Puppet_Camp_Chicago_files/showoff.js"></script>
+    
+      <script type="text/javascript" src="./Puppet_Camp_Chicago_files/onepage.js"></script>
+    
+      <script type="text/javascript" src="./Puppet_Camp_Chicago_files/sh_main.min.js"></script>
+    
+      <script type="text/javascript" src="./Puppet_Camp_Chicago_files/core.js"></script>
+    
+      <script type="text/javascript" src="./Puppet_Camp_Chicago_files/showoffcore.js"></script>
+    
+    
+    
+      
+        <script type="text/javascript" src="./Puppet_Camp_Chicago_files/sh_shell.min.js"></script>
+      
+        <script type="text/javascript" src="./Puppet_Camp_Chicago_files/sh_puppet.min.js"></script>
+      
+    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        setupOnePage()
+      });
+    </script>
+
+  
+</head>
+
+<body>
+<div id="slides">
+  <div class="slide" data-transition="none"><div class="content image center" ref="puppet_camp/puppet_camp/1">
+<p><img src="./Puppet_Camp_Chicago_files/PuppetLogo_small.png" alt="Puppet Labs">
+
+</p><h2>Ryan Coleman</h2>
+
+<h2>@ryanycoleman</h2>
+
+<h2>#puppetcamp</h2>
+
+<h4>This presentation is powered by <a href="https://github.com/schacon/showoff">ShowOff</a>
+</h4><p></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content image center" ref="puppet_camp/puppet_camp/2">
+<p><img src="./Puppet_Camp_Chicago_files/king-content.jpg" alt="Content is King">
+
+</p><h2>1364 Users</h2>
+
+<h2>435 Modules</h2><p></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/3">
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/puppetlabs/apt">PuppetLabs/Apt</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install puppetlabs/apt</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'elmo' {
+
+  apt::source { 'puppetlabs':
+    location   =&gt; 'http://apt.puppetlabs.com',
+    repos      =&gt; 'main',
+    key        =&gt; '4BD6EC30',
+    key_server =&gt; 'pgp.mit.edu',
+  }
+
+}</code></pre></code></div><code>
+</code></div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/4"><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/saz/sudo">Saz/Sudo</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install saz/sudo</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'oscar' {
+
+  sudo::conf { 'admins':
+    priority =&gt; 10,
+    content  =&gt; '%admins ALL=(ALL) NOPASSWD: ALL',
+  }
+
+}</code></pre></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content small" ref="puppet_camp/puppet_camp/5"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/puppetlabs/registry">PuppetLabs/Registry</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install puppetlabs/registry</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'beaker' {
+
+  registry_key { 'HKLM\System\CurrentControlSet\Services\Puppet':
+    ensure =&gt; present,
+  }
+  registry_value { 'HKLM\System\CurrentControlSet\Services\Puppet\Description':
+    ensure =&gt; present,
+    type   =&gt; string,
+    data   =&gt; "The Puppet Agent service periodically manages your configuration",
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/6"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/puppetlabs/openstack">PuppetLabs/openstack</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install puppetlabs/openstack</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'kermit' {
+
+  class { 'openstack::all':
+    public_address       =&gt; '192.168.1.12',
+    public_interface     =&gt; 'eth0',
+    private_interface    =&gt; 'eth1',
+    admin_email          =&gt; 'some_admin@some_company',
+    admin_password       =&gt; 'admin_password',
+    keystone_admin_token =&gt; 'keystone_admin_token',
+    nova_user_password   =&gt; 'nova_user_password',
+    glance_user_password =&gt; 'glance_user_password',
+    rabbit_password      =&gt; 'rabbit_password',
+    rabbit_user          =&gt; 'rabbit_user',
+    libvirt_type         =&gt; 'kvm',
+    fixed_range          =&gt; '10.0.0.0/24',
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/7"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/rtyler/jenkins">RTyler/Jenkins</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install rtyler/jenkins</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'gonzo' {
+
+  class { 'jenkins': }
+  jenkins::plugin { 'git': }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/8"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/puppetlabs/razor">PuppetLabs/Razor</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install puppetlabs/razor</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'big-bird' {
+
+  class { 'razor':
+    ruby_version =&gt; '1.8.7',
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content small" ref="puppet_camp/puppet_camp/9"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/saz/rsyslog">Saz/RSyslog</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install saz/rsyslog</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'cookie-monster' {
+
+  class { 'rsyslog::server':
+    enable_tcp                =&gt; true,
+    enable_udp                =&gt; true,
+    server_dir                =&gt; '/srv/log/',
+    custom_config             =&gt; undef,
+    high_precision_timestamps =&gt; false,
+  }
+  class { 'rsyslog::client':
+    log_remote     =&gt; true,
+    remote_type    =&gt; 'tcp',
+    log_local      =&gt; false,
+    log_auth_local =&gt; false,
+    custom_config  =&gt; undef,
+    server         =&gt; 'cookie-monster',
+    port           =&gt; '514',
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/10"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/domcleal/augeasproviders">DomCleal/AugeasProviders</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install domcleal/augeasproviders</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>class 'bar' {
+
+  host { 'example.com':
+    ensure   =&gt; present,
+    ip       =&gt; '10.1.2.3',
+    provider =&gt; 'augeas',
+  }
+  sshd_config { 'PermitRootLogin':
+    value     =&gt; 'without-password',
+    condition =&gt; 'Host example.net',
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content small" ref="puppet_camp/puppet_camp/11"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/puppetlabs/firewall">PuppetLabs/Firewall</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install puppetlabs/firewall</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'waldorf' {
+
+  firewall { "000 accept all icmp requests":
+    proto =&gt; "icmp",
+    action =&gt; "accept",
+  }
+
+  firewall { "999 drop all other requests":
+    action =&gt; "drop",
+  }
+
+  firewall { '100 snat for network foo2':
+    chain  =&gt; 'POSTROUTING',
+    jump   =&gt; 'MASQUERADE',
+    proto  =&gt; 'all',
+    outiface =&gt; "eth0",
+    source =&gt; ['10.1.2.0/24'],
+    table  =&gt; 'nat',
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/12"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/razorsedge/vmwaretools">razorsedge/vmwaretools</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install RazorsEdge/VMWareTools</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'statler' {
+
+  class { 'vmwaretools':
+    tools_version =&gt; '4.0u3',
+    autoupgrade   =&gt; true,
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/13"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/puppetlabs/dism">PuppetLabs/DISM</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install puppetlabs/dism</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'animal' {
+
+  dism { 'NetFx3':
+    ensure =&gt; present,
+  }
+  dism { 'IIS-WebServer':
+    ensure =&gt; present,
+    answer =&gt; 'C:\answer\iis.xml',
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/14"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/pdxcat/amanda">PDXCAT/Amanda</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install pdxcat/amanda</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'fozzie' {
+
+  class { 'amanda::client':
+    server =&gt; 'backup.cat.pdx.edu',
+  }
+  class { 'amanda::server':
+    configs        =&gt; [ 'daily', 'archive' ],
+    configs_source =&gt; 'modules/data/amanda',
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content smaller" ref="puppet_camp/puppet_camp/15"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/glarizza/haproxy">GLarizza/HAProxy</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install glarizza/haproxy</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'rowlf' {
+
+  class { 'haproxy':
+    enable                   =&gt; true,
+    haproxy_global_options   =&gt; ...
+    ...
+  }
+
+  haproxy::config { 'puppet00':
+    order                  =&gt; '20',
+    virtual_ip             =&gt; $::ipaddress,
+    virtual_ip_port        =&gt; '18140',
+    haproxy_config_options =&gt; { 'option' =&gt; ['tcplog', 'ssl-hello-chk'], 'balance' =&gt; 'roundrobin' },
+  }
+
+}
+
+node 'rizzo' {
+
+  @@haproxy::balancermember { $fqdn:
+    order                  =&gt; '21',
+    listening_service      =&gt; 'puppet00',
+    server_name            =&gt; $::hostname,
+    balancer_ip            =&gt; $::ipaddress,
+    balancer_port          =&gt; '8140',
+    balancermember_options =&gt; 'check'
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content small" ref="puppet_camp/puppet_camp/16"><code><code>
+<h2>#puppetize with the Forge</h2>
+
+<p><a href="http://forge.puppetlabs.com/puppetlabs/mysql">PuppetLabs/MySQL</a></p>
+
+<pre class="sh_shell"><code>$ puppet module install puppetlabs/mysql</code></pre>
+
+<p><code></code></p><code>
+
+<pre class="sh_puppet"><code>node 'miss_piggy' {
+
+  mysql::db { 'mydb':
+    user     =&gt; 'myuser',
+    password =&gt; 'mypass',
+    host     =&gt; 'localhost',
+    grant    =&gt; ['all'],
+  }
+
+  database { 'mydb':
+    charset =&gt; 'latin1',
+  }
+  database_user { 'bob@localhost':
+    password_hash =&gt; mysql_password('foo')
+  }
+  database_grant { 'user@localhost/database':
+    privileges =&gt; ['all'] ,
+  }
+
+}</code></pre></code></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><code><code>
+  <div class="content" ref="puppet_camp/puppet_camp/17">
+<h2>#puppetize with the Forge</h2>
+
+<h2>Lots more!</h2>
+
+<p>Facts, Functions and Types oh-my!<br><a href="http://forge.puppetlabs.com/puppetlabs/stdlib">PuppetLabs/STDLib</a><br>
+
+</p><p>Cloud Provisioners<br><a href="http://forge.puppetlabs.com/puppetlabs/node_gce">PuppetLabs/Node_GCE</a>  <br>
+
+</p><p><a href="http://forge.puppetlabs.com/puppetlabs/node_openstack">PuppetLabs/Node_OpenStack</a>  </p>
+
+<p>General Infrastructure<br><a href="http://forge.puppetlabs.com/puppetlabs/puppetlabs/firewall">PuppetLabs/FireWall</a><br>
+
+</p><p><a href="http://forge.puppetlabs.com/puppetlabs/puppetlabs/apache">PuppetLabs/Apache</a></p><p></p>
+<p></p>
+<p></p></div>
+</code></code></div><div class="slide" data-transition="none"><div class="content image center" ref="puppet_camp/puppet_camp/18"><code><code>
+<h1>Searching For Modules</h1>
+
+<p><img src="./Puppet_Camp_Chicago_files/module_search.jpg" alt="Puppet Module Search"></p>
+</code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content image center" ref="puppet_camp/puppet_camp/19"><code><code>
+<h1>Installing Modules</h1>
+
+<p><img src="./Puppet_Camp_Chicago_files/module_install.jpg" alt="Puppet Module Install"></p>
+</code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content image center" ref="puppet_camp/puppet_camp/20"><code><code>
+<h1>Listing Installed Modules</h1>
+
+<p><img src="./Puppet_Camp_Chicago_files/module_list.jpg" alt="Puppet Module List"></p>
+</code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content small smbullets" ref="puppet_camp/puppet_camp/21"><code><code>
+<h1>Top Ten Community Authors</h1>
+
+<ol>
+<li><a href="http://forge.puppetlabs.com/users/saz">saz</a></li>
+<li><a href="http://forge.puppetlabs.com/users/DavidSchmitt">DavidSchmitt</a></li>
+<li><a href="http://forge.puppetlabs.com/users/dhoppe">dhoppe</a></li>
+<li><a href="http://forge.puppetlabs.com/users/thias">thias</a></li>
+<li><a href="http://forge.puppetlabs.com/users/camptocamp">camptocamp</a></li>
+<li><a href="http://forge.puppetlabs.com/users/mstanislav">mstanislav</a></li>
+<li><a href="http://forge.puppetlabs.com/users/razorsedge">razorsedge</a></li>
+<li><a href="http://forge.puppetlabs.com/users/BenoitCattie">BenoitCattie</a></li>
+<li><a href="http://forge.puppetlabs.com/users/lab42">lab42</a></li>
+<li><a href="http://forge.puppetlabs.com/users/bcarpio">bcarpio</a></li>
+</ol></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="puppet_camp/puppet_camp/22"><code><code>
+<h1>Coming Soon To The Forge</h1>
+
+<ul>
+<li>Bug Fixes</li>
+<li>SSL!</li>
+<li>Platform Improvements</li>
+<li>PMT Publishing</li>
+</ul></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="puppet_camp/puppet_camp/23"><code><code>
+<h1>Focussing On Quality</h1>
+
+<ul>
+<li>Automatic post-publish documentation scraping &amp; linting</li>
+<li>Download Counts</li>
+<li>Ratings &amp; Reviews</li>
+</ul></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="puppet_camp/puppet_camp/24"><code><code>
+<h1>Things we're thinking about</h1>
+
+<ul>
+<li>More content than just modules</li>
+<li>On-Premise Forge | Private Content</li>
+<li>Module Hack Days &amp; Bounties</li>
+</ul></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content bullets" ref="puppet_camp/puppet_camp/25"><code><code>
+<h1>Be Part Of The Future</h1>
+
+<ul>
+<li>Writing Quality Modules
+
+<ul>
+<li>Good Style | Puppet Lint Compliant</li>
+<li>Real Versioning | SemVer</li>
+<li>Simple Interfaces</li>
+<li>Useful Documentation</li>
+</ul>
+</li>
+</ul></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content bullets" ref="puppet_camp/puppet_camp/26"><code><code>
+<h1>Be Part Of The Future</h1>
+
+<ul>
+<li>Collaboration
+
+<ul>
+<li>Find a Forge module you like</li>
+<li>Try it out / Grab the source-code</li>
+<li>Talk to the Author / Identify improvement</li>
+<li>Hack, Submit A Pull, Make a sandwich!</li>
+</ul>
+</li>
+</ul></code></code></div><code><code>
+</code></code></div><div class="slide" data-transition="none"><div class="content" ref="puppet_camp/puppet_camp/27"><code><code>
+<h1>Questions?</h1>
+
+<h2>@ryanycoleman</h2>
+
+<h2>#puppetcamp</h2>
+
+<h3>Slides are available, right now.</h3>
+
+<h3>http://192.168.232.227 &amp; http://192.168.232.227/pdf</h3>
+
+<p><img src="./Puppet_Camp_Chicago_files/PuppetLogo_small.png" alt="Puppet Labs"></p>
+</code></code></div><code><code>
+</code></code></div><code><code>
+</code></code></div><code><code>
+
+
+</code></code></body></html>

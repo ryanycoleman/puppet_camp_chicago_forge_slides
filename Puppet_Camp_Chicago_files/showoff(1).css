@@ -1,0 +1,225 @@
+@media screen {
+    body, html { 
+        height:100%;
+    } 
+    #preso, .slide {
+/* Allows the height to vary by a handful of pixels based on what browser chrome is visible. */
+        height: 100%;
+
+/* static heights to fit different browser configurations. Safari values. */        
+/*      height: 706px;    /* allows room for the tab bar and status bar */
+/*      height: 728px;    /* allows room for the status bar only */
+/*      height: 744px;    /* allows room for neither bar */
+    }
+
+    /* branding */
+    body {
+        font-family: 'Lucida Grande', arial, sans-serif;
+        background: url(_images/linen.png);
+    }
+    
+    code {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* why so center aligned? */    
+    .content > p,
+    .content li {
+        text-align: left !important;
+    }
+
+    /* but put the images back to center. Assumes that images will always be block. */
+    .content > p > img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    
+    /* what is wrong with this guy? */
+    .content li > ol,
+    .content li > ul {
+        font-size: 1em;
+    }
+
+
+    .content {
+        margin-top: 0 !important;  /* Places the slide title consistently. Not vertically centered. */
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+    
+    /* why is this being set explicitly? */
+    .slide .center {
+        width: 1024px;
+    }
+
+    /* Add some nice styling to the code blocks. */
+    .content pre {
+        border: 2px solid #ddd;
+        padding: 0.5em;
+        overflow: hidden;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -khtml-border-radius: 10px;
+        border-radius: 10px;
+    }
+    
+    /* if needed, we can scroll to view */
+    .content pre.code_scrolled {
+        overflow: auto;
+    }
+    
+    /* or wrap the text */
+    .content pre.code_wrap {
+        white-space: pre-wrap; /* css-3 */
+        white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        word-wrap: break-word; /* Internet Explorer 5.5+ */
+    }
+    
+    /* smaller text size */
+    .content pre.code_small {
+        font-size: 125%;
+    }
+    
+    .content pre.code_smaller {
+        font-size: 100%;
+    }
+    
+    /* centered code window */
+    .content pre.code_center {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* add shell inverse color so we can visually identify code. */
+    .content pre.sh_shell,
+    .content pre.sh_puppet_output {
+        background-color: black;
+        color: white;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        -khtml-border-radius: 0;
+        border-radius: 0;
+    }
+    
+    /* add classes for forge results */
+    .content pre.forge {
+        font-family: 'Courier New', Courier, monospace;
+    }
+    .content pre.forge span.hit {
+        color: #81ff26;
+    }
+    .content pre.forge span.version {
+        color: cyan;
+    }
+
+    /* do we need to fiddle with the size? */
+    .content > pre {
+       font-size: 150%;
+    }
+
+    /* make the menu less broken */
+    a.fg-button, div.fg-menu-container {
+        font-size: 0.7em;
+    }
+
+    /* remove some gratuitous whitespace */
+    .content li {
+        padding: .25em;
+    }
+    
+    /* I'm using this style for word definitions. */
+    /* Markdown doesn't seem to give you a way to define & use classes. */
+    blockquote {
+        border: 1px solid #efefef;
+        border-left: 5px solid #ccc;
+        margin-left: 15px;
+        padding: 5px;
+        background: #fefefe;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -khtml-border-radius: 10px;
+        border-radius: 10px;
+    }
+    blockquote hr {
+        height: 1px;
+        border: none;
+        border-top: 1px solid #ccc;
+    }
+    
+    /* table styling */
+    /* first fix sizes for small and smaller slide styles */
+    .content.small table {
+        font-size: 2em;
+    }
+    .content.smaller table {
+        font-size: 1.5em;
+    }
+    
+    /* default to full width */
+    .content table {
+        width: 100%;
+    }
+    
+    /* now add gussied up chart style */
+    table.chart {
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse:collapse;
+        width: 80%;
+    }
+    
+    table.chart th {
+        border-bottom: 2px solid #ccc;
+        padding: 0.5em;
+    }
+    
+    table.chart tr td {
+        border-top: 1px solid #eee;
+        text-align: center;
+        padding: 1em;
+    }
+    
+    table.chart tr td:first-child {
+        border-right: 2px solid #ccc;
+        text-align: left;
+        width: 100px;
+        font-weight: bold;
+    }
+        
+    /* layout & background for exercises and labs */
+    .content.exercise {
+        background: white url('_images/icons/exercise.png') no-repeat top right;
+    }
+    
+    .content.lab {
+        background: white url('_images/icons/cone.png') no-repeat top right;
+    }
+        
+    .content.exercise h1,
+    .content.exercise h2,
+    .content.lab h1,
+    .content.lab h2 {
+        text-align: left;
+    }
+    
+    .content.exercise > ul > li,
+    .content.lab > ul > li {
+        font-weight: bold;
+    }
+    
+    .content.exercise > ul > li > ul,
+    .content.lab > ul > li > ul {
+        font-weight: normal;
+        background: #ccc;
+        margin-right: 4em;
+        border: 2px solid #ddd;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -khtml-border-radius: 10px;
+        border-radius: 10px;
+    }
+}
